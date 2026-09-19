@@ -3,7 +3,7 @@
 ## ¿Por qué es mala práctica usar SELECT * en producción?
 
 Porque empeora el rendimiento de la consulta, ya que trae todas las columnas de la tabla, incluso las que no vas a usar. En una tabla con pocas filas como `sales` no se nota, pero en una tabla real con millones de registros y decenas de columnas, traer datos de más hace que la consulta sea más lenta y consuma más memoria innecesariamente.
-Escribir el nombre de cada columna que necesitás deja en claro, para cualquiera que lea el código después, exactamente qué datos se están usando.
+Además, afecta la mantenibilidad del código, porque si mañana se agrega una columna nueva a la tabla, todas las consultas con SELECT * empiezan a traerla sin que nadie lo haya pedido, lo cual puede romper reportes o procesos que esperan una estructura fija. Escribir el nombre de cada columna que necesitás deja en claro, para cualquiera que lea el código después, exactamente qué datos se están usando
 
 ## ¿Por qué son importantes los alias para un stakeholder no técnico?
 
